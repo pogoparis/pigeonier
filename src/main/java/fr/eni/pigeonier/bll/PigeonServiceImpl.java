@@ -1,20 +1,25 @@
 package fr.eni.pigeonier.bll;
 
 
+import fr.eni.pigeonier.dal.PigeonHistoriqueDAO;
 import fr.eni.pigeonier.bo.Pigeon;
+import fr.eni.pigeonier.bo.PigeonHistorique;
 import fr.eni.pigeonier.dal.PigeonDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PigeonServiceImpl implements PigeonService{
 
     @Autowired
     PigeonDAO pigeonDAO;
-
+    @Autowired
+    PigeonHistoriqueDAO pigeonHistoriqueDAO;
     @Override
     public List<Pigeon> getAllPigeons() {
         return pigeonDAO.findAll();
@@ -40,13 +45,32 @@ public class PigeonServiceImpl implements PigeonService{
     }
 
     @Override
-    public List<Pigeon> attaquerPigeonnier(String targetPigeonnierUrl, Integer attackNumber) {
-        return null;
+    public void enregistrerEntreePigeon(Pigeon pigeon) {
+        LocalDate localDate = LocalDate.now();
+        LocalTime localTime = LocalTime.now();
+        LocalDateTime localDateTime = LocalDateTime.of(localDate, localTime);
+        PigeonHistorique historique = new PigeonHistorique();
+        historique.setNom(pigeon.getNom());
+        historique.setProprio(pigeon.getProprio());
+        historique.setDateEntree(localDateTime);
+        pigeonHistoriqueDAO.save(historique);
     }
 
     @Override
-    public void enregistrerEntreePigeon(Pigeon pigeon) {
+    public void enregistrerSortiePigeon(Pigeon pigeon) {
+        LocalDate localDate = LocalDate.now();
+        LocalTime localTime = LocalTime.now();
+        LocalDateTime localDateTime = LocalDateTime.of(localDate, localTime);
+        PigeonHistorique historique = new PigeonHistorique();
+        historique.setNom(pigeon.getNom());
+        historique.setProprio(pigeon.getProprio());
+        historique.setDateSortie(localDateTime);
+        pigeonHistoriqueDAO.save(historique);
+    }
 
+    @Override
+    public List<PigeonHistorique> getAllPigeonsHistorique() {
+        return pigeonHistoriqueDAO.findAll();
     }
 
     @Override
@@ -54,8 +78,4 @@ public class PigeonServiceImpl implements PigeonService{
         return pigeonDAO.findById(pigeonId).orElse(null);
     }
 
-    @Override
-    public void enregistrerSortiePigeon(Pigeon pigeon) {
-
-    }
 }

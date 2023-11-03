@@ -22,6 +22,24 @@
 <br>
 <button><a href="http://localhost:8080/attaque">Attaquer</a></button>
 <button><a href="#">Actualiser</a></button>
+
+<h2>Historique des Pigeons</h2>
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Propriétaire</th>
+        <th>Code</th>
+        <th>Date d'Entrée</th>
+        <th>Date dde Sortie</th>
+    </tr>
+    <tr th:each="historique : ${historiquePigeons}">
+        <td th:text="${historique.nom}"></td>
+        <td th:text="${historique.proprio}"></td>
+        <td th:text="${historique.code}"></td>
+        <td th:text="${historique.dateEntree}"></td>
+        <td th:text="${historique.dateSortie}"></td>
+    </tr>
+</table>
 </body>
 
 </html>

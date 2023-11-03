@@ -2,6 +2,7 @@ package fr.eni.pigeonier.controller;
 
 import fr.eni.pigeonier.bll.PigeonService;
 import fr.eni.pigeonier.bo.Pigeon;
+import fr.eni.pigeonier.bo.PigeonHistorique;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -20,7 +22,10 @@ public class PigeonController {
     @GetMapping("/pigeons")
     public String getAllPigeons(Model model) {
         List<Pigeon> pigeons = pigeonService.getAllPigeons();
+        List<PigeonHistorique> historiquePigeons = pigeonService.getAllPigeonsHistorique();
+
         model.addAttribute("pigeons", pigeons);
+        model.addAttribute("historiquePigeons", historiquePigeons);
         return "pigeon_list";
     }
 

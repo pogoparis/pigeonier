@@ -1,6 +1,7 @@
 package fr.eni.pigeonier.bll;
 
 import fr.eni.pigeonier.bo.Pigeon;
+import fr.eni.pigeonier.bo.PigeonHistorique;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,11 +16,12 @@ public interface PigeonService {
 
     void supprimerPigeonsByCode(String code);
 
-    List<Pigeon> attaquerPigeonnier(String targetPigeonnierUrl, Integer attackNumber);
 
     void enregistrerEntreePigeon(Pigeon pigeon);
 
     Pigeon getPigeonById(Integer pigeonId);
 
     void enregistrerSortiePigeon(Pigeon pigeon);
+
+    List<PigeonHistorique> getAllPigeonsHistorique();
 }
