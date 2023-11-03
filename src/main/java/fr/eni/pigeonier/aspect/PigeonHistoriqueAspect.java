@@ -24,9 +24,10 @@ public class PigeonHistoriqueAspect {
         }
     }
 
-    @Before("execution(* fr.eni.pigeonier.bll.PigeonServiceImpl.supprimerPigeonsByCode(..)) && args(pigeonId)")
-    public void avantSuppressionPigeon(Integer pigeonId) {
-        Pigeon pigeon = pigeonService.getPigeonById(pigeonId);
+    @Before("execution(* fr.eni.pigeonier.bll.PigeonServiceImpl.supprimerPigeonsByCode(..)) && args(pigeonCode)")
+    public void avantSuppressionPigeon(String pigeonCode) {
+        Pigeon pigeon = pigeonService.getPigeonByCode(pigeonCode);
+        System.out.printf("TESET avant suppression" );
         if (pigeon != null) {
             pigeonService.enregistrerSortiePigeon(pigeon);
         }

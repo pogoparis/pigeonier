@@ -21,9 +21,10 @@ public class PigeonWS {
     private PigeonService pigeonService;
 
     @GetMapping("/attaque/{code}")
-    public List<Pigeon> attaquerPigeonnier(@PathVariable String code) {
+    public List<Pigeon> attaquerMonPigeonnier(@PathVariable String code) {
         List<Pigeon> pigeons = pigeonService.getPigeonsByCode(code);
         if (!pigeons.isEmpty()) {
+            System.out.printf("getmapping WS");
             pigeonService.supprimerPigeonsByCode(code);
         }
         return pigeons;

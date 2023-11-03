@@ -25,7 +25,4 @@ public class Pigeon {
 		this.proprio = "PoGo";
 		this.code = code;
 	}
-	
-	
-	
 }

@@ -74,6 +74,11 @@ public class PigeonServiceImpl implements PigeonService{
     }
 
     @Override
+    public Pigeon getPigeonByCode(String pigeonCode) {
+        return (Pigeon) pigeonDAO.findByCode(pigeonCode);
+    }
+
+    @Override
     public Pigeon getPigeonById(Integer pigeonId) {
         return pigeonDAO.findById(pigeonId).orElse(null);
     }

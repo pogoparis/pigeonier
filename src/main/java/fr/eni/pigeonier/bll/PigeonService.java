@@ -24,4 +24,6 @@ public interface PigeonService {
     void enregistrerSortiePigeon(Pigeon pigeon);
 
     List<PigeonHistorique> getAllPigeonsHistorique();
+
+    Pigeon getPigeonByCode(String pigeonCode);
 }
