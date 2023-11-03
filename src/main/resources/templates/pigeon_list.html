@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Liste des Pigeons</title>
+</head>
+<body>
+<h1>Liste des Pigeons</h1>
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Propriétaire</th>
+        <th>Code</th>
+    </tr>
+    <tr th:each="pigeon : ${pigeons}">
+        <td th:text="${pigeon.nom}"></td>
+        <td th:text="${pigeon.proprio}"></td>
+        <td th:text="${pigeon.code}"></td>
+    </tr>
+</table>
+<a href="/pigeons/add">Ajouter un Pigeon</a>
+</body>
+</html>

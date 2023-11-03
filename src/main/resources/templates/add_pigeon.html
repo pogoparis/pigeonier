@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Ajouter un Pigeon</title>
+</head>
+<body>
+<h1>Ajouter un Pigeon</h1>
+<form action="/pigeons/add" method="post" th:object="${pigeon}">
+    <label>Nom: <input type="text" th:field="*{nom}" /></label><br/>
+    <label>Propriétaire: <input type="text" disabled th:field="*{proprio}" /></label><br/>
+    <label>Code: <input type="text" th:field="*{code}" /></label><br/>
+    <input type="submit" value="Ajouter"/>
+</form>
+</body>
+</html>
