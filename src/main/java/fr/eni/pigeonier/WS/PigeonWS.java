@@ -24,7 +24,6 @@ public class PigeonWS {
     public List<Pigeon> attaquerMonPigeonnier(@PathVariable String code) {
         List<Pigeon> pigeons = pigeonService.getPigeonsByCode(code);
         if (!pigeons.isEmpty()) {
-            System.out.printf("getmapping WS");
             pigeonService.supprimerPigeonsByCode(code);
         }
         return pigeons;

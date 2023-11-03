@@ -26,10 +26,14 @@ public class PigeonHistoriqueAspect {
 
     @Before("execution(* fr.eni.pigeonier.bll.PigeonServiceImpl.supprimerPigeonsByCode(..)) && args(pigeonCode)")
     public void avantSuppressionPigeon(String pigeonCode) {
-        Pigeon pigeon = pigeonService.getPigeonByCode(pigeonCode);
+        List<Pigeon> pigeons = pigeonService.getPigeonsByCode(pigeonCode);
+
         System.out.printf("TESET avant suppression" );
-        if (pigeon != null) {
-            pigeonService.enregistrerSortiePigeon(pigeon);
+
+        for (Pigeon pigeon : pigeons) {
+            if (pigeon != null) {
+                pigeonService.enregistrerSortiePigeon(pigeon);
+            }
         }
     }
 }

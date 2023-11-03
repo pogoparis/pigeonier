@@ -36,11 +36,11 @@ public class PigeonServiceImpl implements PigeonService{
     }
 
     public List<Pigeon> getPigeonsByCode(String code) {
-        return pigeonDAO.findByCode(code);
+        return pigeonDAO.findAllByCode(code);
     }
 
     public void supprimerPigeonsByCode(String code) {
-        List<Pigeon> pigeons = pigeonDAO.findByCode(code);
+        List<Pigeon> pigeons = pigeonDAO.findAllByCode(code);
         pigeonDAO.deleteAll(pigeons);
     }
 
@@ -71,16 +71,6 @@ public class PigeonServiceImpl implements PigeonService{
     @Override
     public List<PigeonHistorique> getAllPigeonsHistorique() {
         return pigeonHistoriqueDAO.findAll();
-    }
-
-    @Override
-    public Pigeon getPigeonByCode(String pigeonCode) {
-        return (Pigeon) pigeonDAO.findByCode(pigeonCode);
-    }
-
-    @Override
-    public Pigeon getPigeonById(Integer pigeonId) {
-        return pigeonDAO.findById(pigeonId).orElse(null);
     }
 
 }

@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface PigeonDAO extends JpaRepository<Pigeon, Integer> {
 
-    List<Pigeon> findByCode(String code);
 
+    List<Pigeon> findAllByCode(String code);
 }
