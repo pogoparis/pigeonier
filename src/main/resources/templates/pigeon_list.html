@@ -5,6 +5,7 @@
 </head>
 <body>
 <h1>Liste des Pigeons</h1>
+<div th:if="${message != null}" th:text="${message}" style="color: green;"></div>
 <table>
     <tr>
         <th>Nom</th>
@@ -17,6 +18,10 @@
         <td th:text="${pigeon.code}"></td>
     </tr>
 </table>
-<a href="/pigeons/add">Ajouter un Pigeon</a>
+<button><a href="/pigeons/add">Ajouter un Pigeon</a></button>
+<br>
+<button><a href="http://localhost:8080/attaque">Attaquer</a></button>
+<button><a href="#">Actualiser</a></button>
 </body>
+
 </html>

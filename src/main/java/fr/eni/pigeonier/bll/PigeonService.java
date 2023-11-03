@@ -11,6 +11,7 @@ public interface PigeonService {
     void addPigeon(Pigeon pigeon);
 
     List<Pigeon> getPigeonsByCode(String code);
+    void addAllPigeons(List<Pigeon> pigeons);
 
     void supprimerPigeonsByCode(String code);
 

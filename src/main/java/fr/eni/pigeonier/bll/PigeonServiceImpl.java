@@ -22,7 +22,12 @@ public class PigeonServiceImpl implements PigeonService{
 
     @Override
     public void addPigeon(Pigeon pigeon) {
-    pigeonDAO.save(pigeon);
+    pigeonDAO.saveAndFlush(pigeon);
+    }
+
+    @Override
+    public void addAllPigeons(List<Pigeon> pigeons) {
+        pigeonDAO.saveAll(pigeons);
     }
 
     public List<Pigeon> getPigeonsByCode(String code) {

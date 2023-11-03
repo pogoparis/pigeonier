@@ -1,5 +1,6 @@
 package fr.eni.pigeonier.bo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -10,8 +11,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Pigeon {
+
 	@Id
 	@GeneratedValue
+	@JsonIgnore
 	private Integer idPigeon;
 	private String nom;
 	private String proprio = "PoGo";
